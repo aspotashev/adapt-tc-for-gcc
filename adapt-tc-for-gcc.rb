@@ -15,7 +15,7 @@ class String
 		}
 
 		repl = $INCLUDE_TR[$2]
-		raise 'unhandled include file, add it to $INCLUDE_TR' if repl.nil?
+		raise "unhandled include file (#{$2}), add it to $INCLUDE_TR" if repl.nil?
 
 		self.replace('#include <' + repl + '>')
 	end
