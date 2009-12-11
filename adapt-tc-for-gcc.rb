@@ -11,7 +11,10 @@ class String
 		raise if $~.nil?
 
 		$INCLUDE_TR = {
-			'iostream.h' => 'iostream'
+			'iostream.h' => 'iostream',
+
+			'stdio.h' => 'stdio.h',
+			'string.h' => 'string.h',
 		}
 
 		repl = $INCLUDE_TR[$2]
