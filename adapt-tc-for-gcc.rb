@@ -15,12 +15,17 @@ class String
 
 			'stdio.h' => 'stdio.h',
 			'string.h' => 'string.h',
+			'process.h' => :none,
 		}
 
 		repl = $INCLUDE_TR[$2]
 		raise "unhandled include file (#{$2}), add it to $INCLUDE_TR" if repl.nil?
 
-		self.replace('#include <' + repl + '>')
+		if repl != :none
+			self.replace('#include <' + repl + '>')
+		else
+			self.replace('')
+		end
 	end
 end
 
