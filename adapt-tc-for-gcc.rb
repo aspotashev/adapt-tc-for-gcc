@@ -68,9 +68,11 @@ end
 @a.each do |ln|
 	if ln =~ /^void main\(\)$/
 		ln.replace('void __user_main()')
+		@replaced_main = true
 		break
 	end
 end
+raise "main() not found" if not @replaced_main
 
 @a << 'int main() { __user_main(); return 0; }'
 
